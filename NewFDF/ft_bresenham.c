@@ -6,7 +6,7 @@
 /*   By: vgauther <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/18 18:28:25 by vgauther          #+#    #+#             */
-/*   Updated: 2017/12/18 19:14:00 by vgauther         ###   ########.fr       */
+/*   Updated: 2017/12/19 16:20:44 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,42 +16,53 @@ void	ft_bresenham(int x1,int y1, int x2, int y2, void *mlx, void *win)
 {
 	int dx;
 	int dy;
-	int e;
+	int i;
+	int xinc;
+	int yinc;
+	int cumul;
+	int x;
+	int y;
 
-	if (x1 < x2)
+	x = x1;
+	y = y1;
+	dx = x2 - x1;
+	dy = y2 - y1;
+	xinc = (dx > 0) ? 1 : -1 ;
+	yinc = (dy > 0) ? 1 : -1 ;
+	dx = abs(dx);
+	dy = abs(dy);
+	i = 1;
+	mlx_pixel_put(mlx, win, x, y, 0xff0000);
+	if(dx > dy)
 	{
-		e = x2 - x1;
-		dx = e * 2;
-		dy = (y2 - y1) * 2;
-		while(x1 <= x2)
+		cumul = dx / 2;
+		while(i <= dx)
 		{
-			mlx_pixel_put(mlx, win, x1, y1, 0xFF0000);
-			x1++;
-			e = e - dy;
-			if(e <= 0)
+			x = x+ xinc;
+			cumul = cumul + dy;
+			if(cumul >= dx)
 			{
-				y1++;
-				e = e + dx;
+				cumul = cumul - dx;
+				y = y + yinc;
 			}
+			i++;
+			mlx_pixel_put(mlx, win, x, y, 0xff0000);
 		}
 	}
 	else
 	{
-		e = y2 - y1;
-		dy = e * 2;
-		dx = (x2 - x1) * 2;
-
-		while(y1 <= y2)
+		cumul = dy / 2;
+		while(i <= dy)
 		{
-			mlx_pixel_put(mlx, win, x1, y1, 0xFF0000);
-			y1++;
-			e = e - dx;
-			if(e <= 0)
+			y = y + yinc;
+			cumul = cumul + dx;
+			if(cumul >= dy)
 			{
-				x1++;
-				e = e + dy;
+				cumul = cumul - dy;
+				x = x + xinc;
 			}
+			mlx_pixel_put(mlx, win, x, y, 0xFF0000);
+			i++;
 		}
-
 	}
 }

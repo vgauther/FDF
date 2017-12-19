@@ -6,7 +6,7 @@
 /*   By: vgauther <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 14:33:49 by vgauther          #+#    #+#             */
-/*   Updated: 2017/12/18 18:44:41 by vgauther         ###   ########.fr       */
+/*   Updated: 2017/12/19 10:45:26 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
+# include <math.h>
 
 typedef struct	s_line
 {
