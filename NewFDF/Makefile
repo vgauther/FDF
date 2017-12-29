@@ -28,7 +28,7 @@ BOLDWHITE=\033[1m\033[37m
 
 NAME = fdf
 SRC = main.c ft_open_n_read.c GNL/get_next_line.c ft_bresenham.c ft_open_map.c ft_print_map.c
-FLAGS = -Werror -Wall -Wextra -g
+FLAGS = -Werror -Wall -Wextra
 FWORK = -framework OpenGL -framework AppKit
 
 .PHONY: clean fclean re re-bis all
@@ -41,7 +41,8 @@ $(NAME):
 	@echo "$(RESET)$(CYAN)MAKING MLX LIB ...$(RESET)"
 	@make -C minilibx_macos/
 	@gcc -o $(NAME) $(FLAGS) $(FWORK) $(SRC) \
-		-I minilibx_macos/ -lmlx -I libft/ -L libft/ -lft
+		-I ./minilibx_macos -L ./minilibx_macos -l mlx -I ./libft \
+		-L ./libft -l ft
 	@echo "$(RESET)$(GREEN)EXECUTABLE FDF DONE$(RESET)"
 
 
@@ -62,6 +63,6 @@ fclean:clean
 re:fclean all
 
 re-bis:
-	@gcc -o $(NAME) $(FLAGS) $(FWORK) $(SRC) -I minilibx_macos/ -lmlx -I libft/ -L libft/ -lft
+	@gcc -o $(NAME) $(FLAGS) $(FWORK) $(SRC) -I minilibx_macos/ -I libft/
 	@echo "$(RESET)$(GREEN)EXECUTABLE FDF DONE$(RESET)"
 
