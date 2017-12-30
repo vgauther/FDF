@@ -6,7 +6,7 @@
 /*   By: vgauther <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 14:33:49 by vgauther          #+#    #+#             */
-/*   Updated: 2017/12/19 10:45:26 by vgauther         ###   ########.fr       */
+/*   Updated: 2017/12/30 18:38:28 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,8 @@ int		ft_coutwords(char *str);
 void	ft_print_map(t_line *list, void *win, void *mlx);
 t_line	*ft_creat_map(char *target);
 void	ft_bresenham(int x1,int y1, int x2, int y2, void *mlx, void *win);
+int		ft_x(int x, int y, int z, int angle);
+int		ft_y(int x, int y, int z, int angle);
+int		ft_z(int x, int y, int z, int angle);
 
 #endif

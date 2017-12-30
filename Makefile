@@ -6,7 +6,7 @@
 #    By: vgauther <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/11 15:25:18 by vgauther          #+#    #+#              #
-#    Updated: 2017/12/19 12:22:05 by vgauther         ###   ########.fr        #
+#    Updated: 2017/12/30 23:23:06 by vgauther         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ BOLDRED=\033[1m\033[31m
 BOLDWHITE=\033[1m\033[37m
 
 NAME = fdf
-SRC = main.c ft_open_n_read.c GNL/get_next_line.c ft_bresenham.c ft_open_map.c ft_print_map.c
+SRC = main.c ft_open_n_read.c GNL/get_next_line.c ft_bresenham.c ft_open_map.c ft_print_map.c xyz.c
 FLAGS = -Werror -Wall -Wextra
 FWORK = -framework OpenGL -framework AppKit
 
@@ -63,6 +63,8 @@ fclean:clean
 re:fclean all
 
 re-bis:
-	@gcc -o $(NAME) $(FLAGS) $(FWORK) $(SRC) -I minilibx_macos/ -I libft/
+	@gcc -o $(NAME) $(FLAGS) $(FWORK) $(SRC) \
+		-I ./minilibx_macos -L ./minilibx_macos -l mlx -I ./libft \
+		-L ./libft -l ft
 	@echo "$(RESET)$(GREEN)EXECUTABLE FDF DONE$(RESET)"
 
