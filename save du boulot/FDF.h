@@ -6,7 +6,7 @@
 /*   By: vgauther <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 14:33:49 by vgauther          #+#    #+#             */
-/*   Updated: 2018/01/01 19:59:25 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/01/03 22:45:27 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,14 @@
 # include <fcntl.h>
 # include <math.h>
 
+typedef struct	s_data
+{
+	void		*mlx;
+	void		*win;
+	int			len_map;
+	int			hei_map;
+}				t_data;
+
 typedef struct	s_line
 {
 	int			*data;
@@ -41,12 +49,14 @@ typedef struct	s_tab
 char	*ft_open_n_read(char *target);
 int		get_next_line(const int fd, char **line);
 int		ft_coutwords(char *str);
-void	ft_print_map(t_tab **tab, void *win, void *mlx, int len);
+void	ft_print_map(t_tab **tab, t_data data);
 t_line	*ft_creat_map(char *target);
 void	ft_bresenham(int x1,int y1, int x2, int y2, void *mlx, void *win);
 int		ft_x(int x, int y, int z, int angle);
 int		ft_y(int x, int y, int z, int angle);
 int		ft_z(int x, int y, int z, int angle);
 t_tab	**open_in_tab(char *str);
+int		ft_count_hei(char *str);
+int		ft_count_len(char *str);
 
 #endif

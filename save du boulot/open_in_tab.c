@@ -6,7 +6,7 @@
 /*   By: vgauther <vgauther@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/01 14:49:05 by vgauther          #+#    #+#             */
-/*   Updated: 2018/01/01 20:22:08 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/01/03 22:34:03 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int		ft_count_hei(char *str)
 	nbr = 0;
 	while (str[i])
 	{
-		if(str[i] != '\n')
+		if(str[i] == '\n')
 			nbr++;
 		i++;
 	}
@@ -101,9 +101,7 @@ t_tab **open_in_tab(char *str)
 		}
 		free(tmp2);
 		x = 0;
-		printf("%d\n", y);
 		y++;
 	}
-	//ft_print_tab(tab, len);
 	return (tab);
 }

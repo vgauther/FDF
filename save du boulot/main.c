@@ -6,7 +6,7 @@
 /*   By: vgauther <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 15:40:29 by vgauther          #+#    #+#             */
-/*   Updated: 2018/01/03 14:44:39 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/01/03 22:46:00 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,20 +44,22 @@ int		ft_coutwords(char *str)
 
 int main(int ac, char **av)
 {
-	void *mlx;
-	void *win;
 	char *str;
 	t_tab **tab;
+	t_data	data;
 
 	if (ac != 2)
 		return 0;
 	str = ft_open_n_read(av[1]);
-	mlx = mlx_init();
-	win = mlx_new_window(mlx, 500, 500, "FDF's window");
-	mlx_key_hook(win,ft_exit, 0);
+	data.mlx = mlx_init();
+	data.win = mlx_new_window(data.mlx, 500, 500, "FDF's window");
+	data.len_map = ft_count_len(str);
+	data.hei_map = ft_count_hei(str);
+	printf("%d\n", data.len_map);
+	printf("%d", data.hei_map);
+	mlx_key_hook(data.win,ft_exit, 0);
 	tab = open_in_tab(str);
-	
-	ft_print_map(tab, win, mlx, ft_coutwords(str));
-	mlx_loop(mlx);
+	ft_print_map(tab, data);
+	mlx_loop(data.mlx);
 	return 0;
 }
