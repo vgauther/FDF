@@ -6,7 +6,7 @@
 /*   By: vgauther <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 15:40:29 by vgauther          #+#    #+#             */
-/*   Updated: 2018/01/01 19:58:17 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/01/03 14:44:39 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,8 @@ int main(int ac, char **av)
 	char *str;
 	t_tab **tab;
 
-	//t_line *list;
-	
 	if (ac != 2)
 		return 0;
-//	list = ft_creat_map(av[1]);
 	str = ft_open_n_read(av[1]);
 	mlx = mlx_init();
 	win = mlx_new_window(mlx, 500, 500, "FDF's window");
@@ -64,8 +61,3 @@ int main(int ac, char **av)
 	mlx_loop(mlx);
 	return 0;
 }
-
-/*
-	algorithm de bresenham
-	faire une projection de bie via cos sin (chercher rotation axes)
-*/
