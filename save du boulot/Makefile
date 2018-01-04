@@ -6,7 +6,7 @@
 #    By: vgauther <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/11 15:25:18 by vgauther          #+#    #+#              #
-#    Updated: 2018/01/01 18:28:17 by vgauther         ###   ########.fr        #
+#    Updated: 2018/01/04 16:43:50 by vgauther         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,8 +27,9 @@ BOLDRED=\033[1m\033[31m
 BOLDWHITE=\033[1m\033[37m
 
 NAME = fdf
-SRC = main.c ft_open_n_read.c GNL/get_next_line.c ft_bresenham.c ft_open_map.c ft_print_map.c xyz.c open_in_tab.c
-FLAGS = -Werror -Wall -Wextra
+SRC = main.c ft_open_n_read.c GNL/get_next_line.c ft_bresenham.c \
+	  ft_print_map.c xyz.c open_in_tab.c
+FLAGS = -Werror -Wall -Wextra -g
 FWORK = -framework OpenGL -framework AppKit
 
 .PHONY: clean fclean re re-bis all

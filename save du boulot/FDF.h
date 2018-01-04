@@ -6,14 +6,14 @@
 /*   By: vgauther <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 14:33:49 by vgauther          #+#    #+#             */
-/*   Updated: 2018/01/03 22:45:27 by vgauther         ###   ########.fr       */
+/*   Updated: 2018/01/04 18:39:10 by vgauther         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 
-# define BUFF_SIZE 100
+# define BUFF_SIZE 1000
 # include "minilibx_macos/mlx.h"
 # include "libft/libft.h"
 # include <stdio.h>
@@ -25,12 +25,24 @@
 # include <fcntl.h>
 # include <math.h>
 
+typedef struct	s_tab
+{
+	int			z;
+	int			color;
+}				t_tab;
+
 typedef struct	s_data
 {
 	void		*mlx;
 	void		*win;
 	int			len_map;
 	int			hei_map;
+	double		angle;
+	int			res;
+	double		x_angle;
+	double		y_angle;
+	double		z_angle;
+	t_tab		**tab;
 }				t_data;
 
 typedef struct	s_line
@@ -40,22 +52,16 @@ typedef struct	s_line
 	struct		s_line *next;
 }				t_line;
 
-typedef struct	s_tab
-{
-	int			z;
-	int			color;
-}				t_tab;
-
 char	*ft_open_n_read(char *target);
 int		get_next_line(const int fd, char **line);
-int		ft_coutwords(char *str);
+//int		ft_coutwords(char *str);
 void	ft_print_map(t_tab **tab, t_data data);
 t_line	*ft_creat_map(char *target);
-void	ft_bresenham(int x1,int y1, int x2, int y2, void *mlx, void *win);
-int		ft_x(int x, int y, int z, int angle);
-int		ft_y(int x, int y, int z, int angle);
-int		ft_z(int x, int y, int z, int angle);
-t_tab	**open_in_tab(char *str);
+void	ft_bresenham(int x1,int y1, int x2, int y2, t_data data, int color);
+int		ft_x(int x, int y, int z, t_data d);
+int		ft_y(int x, int y, int z, t_data d);
+//int		ft_z(int x, int y, int z, int angle);
+t_tab	**open_in_tab(char *str, t_data data);
 int		ft_count_hei(char *str);
 int		ft_count_len(char *str);
 
