@@ -6,7 +6,7 @@
 #    By: fde-souz <fde-souz@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/29 11:52:57 by fde-souz          #+#    #+#              #
-#    Updated: 2018/01/09 18:35:29 by vgauther         ###   ########.fr        #
+#    Updated: 2019/03/24 21:20:30 by vgauther         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ SRC_PATH = ./SRCS/
 INC_PATH = ./INCLUDES/
 OBJ_PATH = ./OBJ/
 LFT_PATH = ./libft/
-MLX_PATH = ./minilibx_macos/
+MLX_PATH = ./minilibx/
 
 SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))
 OBJ = $(addprefix $(OBJ_PATH),$(OBJ_NAME))
@@ -44,7 +44,7 @@ INC = $(addprefix -I,$(INC_PATH))
 
 OBJ_NAME = $(SRC_NAME:.c=.o)
 
-INC_NAME = fillit.h
+INC_NAME = fdf.h
 
 SRC_NAME = main.c ft_open_n_read.c ft_counter.c ft_bresenham.c draw.c color.c \
 		xyz.c error.c keyhook.c ft_countwords.c free.c creat_tab.c
@@ -58,7 +58,7 @@ $(NAME): $(OBJ)
 	@echo "$(RESET)$(CYAN)MAKING MLX LIB ...$(RESET)"
 	@make -C $(MLX_PATH)
 	@echo "$(RESET)$(GREEN)MLX DONE\n$(RESET)"
-	@$(CC) -o $(NAME) $(OBJ) -lm -L $(LFT_PATH) -lft -lmlx -lm -framework OpenGL -framework AppKit
+	@$(CC) -o $(NAME) $(OBJ) -lm -L $(LFT_PATH) -lft -lm -L $(MLX_PATH) -lmlx -framework OpenGL -framework AppKit
 	@echo "$(RESET)$(GREEN)[✓] EXECUTABLE FDF DONE$(RESET)"
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
